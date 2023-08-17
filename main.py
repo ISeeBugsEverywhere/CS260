@@ -54,16 +54,16 @@ class OrielWindow(QtWidgets.QMainWindow):
     def toggle_fn(self):
         s = self.oriel.shutter()
         self.ui.responsesField.appendPlainText(str(s)+"\n")
-        if s.upper() == 'c':
+        if s.lower() == 'c':
             self.oriel.openShutter()
-        elif s.upper() == 'o':
+        elif s.lower() == 'o':
             self.oriel.closeShutter()
     def check_fn(self):
         s = self.oriel.shutter()
         self.ui.responsesField.appendPlainText(str(s) + "\n")
-        if s.upper() == 'c':
+        if s.lower() == 'c':
             self.ui.responsesField.appendPlainText("Shutter is closed.\n")
-        elif s.upper() == 'o':
+        elif s.lower() == 'o':
             self.ui.responsesField.appendPlainText("Shutter is opened.\n")
     def wave_fn(self):
         w = self.oriel.wave()
