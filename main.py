@@ -21,7 +21,7 @@ class OrielWindow(QtWidgets.QMainWindow):
         self.ui.shutterToggleBtn.clicked.connect(self.toggle_fn)
         self.ui.shutterCheckBtn.clicked.connect(self.check_fn)
         self.ui.waveBtn.clicked.connect(self.wave_fn)
-        self.ui.actionQuit.toggled.connect(self.quit_fn)
+        self.ui.actionQuit.triggered.connect(self.quit_fn)
 
     def quit_fn(self):
         sys.exit(0)
