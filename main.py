@@ -53,6 +53,7 @@ class OrielWindow(QtWidgets.QMainWindow):
         self.ui.responsesField.appendPlainText(f"Bytes written: {bts}\n")
     def toggle_fn(self):
         s = self.oriel.shutter()
+        self.ui.responsesField.appendPlainText(str(s)+"\n")
         if s == 'c':
             self.oriel.openShutter()
         elif s == 'o':

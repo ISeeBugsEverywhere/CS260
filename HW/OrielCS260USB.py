@@ -88,14 +88,14 @@ class Oriel():
         """
         closes a shutter
         """
-        self.cmd("SHUTTER C")
+        return self.cmd("SHUTTER C")
         pass
 
     def openShutter(self):
         """
         opens a shutter
         """
-        self.cmd("SHUTTER O")
+        return self.cmd("SHUTTER O")
         pass
 
     def shutter(self, size=SIZE):
