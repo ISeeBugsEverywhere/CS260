@@ -21,6 +21,7 @@ class OrielWindow(QtWidgets.QMainWindow):
         self.ui.shutterToggleBtn.clicked.connect(self.toggle_fn)
         self.ui.shutterCheckBtn.clicked.connect(self.check_fn)
         self.ui.waveBtn.clicked.connect(self.wave_fn)
+        self.ui.actionQuit.toggled.connect(self.quit_fn)
 
     def quit_fn(self):
         sys.exit(0)
@@ -36,10 +37,18 @@ class OrielWindow(QtWidgets.QMainWindow):
     def go_fn(self):
         val =  self.ui.entryBox.value()
         unit = 'nm' # default
-        if self.ui.nmRadioBtn.isChecked():
-            unit = 'nm'
-        elif self.ui.evRadioBtn.isChecked():
+        if val < 179:
             unit = 'ev'
+            self.ui.evRadioBtn.setChecked(True)
+            self.ui.nmRadioBtn.setChecked(False)
+        elif val > 180:
+            unit = 'nm'
+            self.ui.evRadioBtn.setChecked(False)
+            self.ui.nmRadioBtn.setChecked(True)
+        # if self.ui.nmRadioBtn.isChecked():
+        #     unit = 'nm'
+        # elif self.ui.evRadioBtn.isChecked():
+        #     unit = 'ev'
         bts = self.oriel.gowave(val, unit)
         self.ui.responsesField.appendPlainText(f"Bytes written: {bts}\n")
     def toggle_fn(self):
