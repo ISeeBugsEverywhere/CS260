@@ -53,14 +53,16 @@ class OrielWindow(QtWidgets.QMainWindow):
         self.ui.responsesField.appendPlainText(f"Bytes written: {bts}\n")
     def toggle_fn(self):
         s = self.oriel.shutter()
-        self.ui.responsesField.appendPlainText(str(s)+"\n")
+        # self.ui.responsesField.appendPlainText(str(s)+"\n")
         if s.lower() == 'c':
             self.oriel.openShutter()
+            self.ui.shutterStatusLabel.setText("OPENED")
         elif s.lower() == 'o':
             self.oriel.closeShutter()
+            self.ui.shutterStatusLabel.setText("CLOSED")
     def check_fn(self):
         s = self.oriel.shutter()
-        self.ui.responsesField.appendPlainText(str(s) + "\n")
+        # self.ui.responsesField.appendPlainText(str(s) + "\n")
         if s.lower() == 'c':
             self.ui.responsesField.appendPlainText("Shutter is closed.\n")
         elif s.lower() == 'o':
