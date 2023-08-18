@@ -31,6 +31,8 @@ class OrielWindow(QtWidgets.QMainWindow):
         r = self.oriel.setup()
         if r == 0:
             self.ui.statusLabel.setText("CONNECTED")
+            cw = self.oriel.wave()
+            self.ui.waveLabel.setText(WAVE_LABEL_TEXT.format(cw))
         elif r == 1:
             self.ui.responsesField.appendPlainText(f"NOT CONNECTED, status {r}\n")
         else:
