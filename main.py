@@ -58,7 +58,7 @@ class OrielWindow(QtWidgets.QMainWindow):
         bts = self.oriel.gowave(val, unit)
         self.ui.responsesField.appendPlainText(f"Bytes written: {bts}\n")
         #     delay?
-        time.sleep(abs(c_wave-n_wave)/10.0*0.25)
+        time.sleep(abs(c_wave-n_wave)/10.0*0.175)
         cw = self.oriel.wave()
         self.ui.waveLabel.setText(WAVE_LABEL_TEXT.format(cw))
 
