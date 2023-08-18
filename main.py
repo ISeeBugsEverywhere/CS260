@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import sys, os, math
+import time
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from GUI.CS260 import Ui_MainWindow
 from HW.OrielCS260USB import Oriel
@@ -35,22 +37,31 @@ class OrielWindow(QtWidgets.QMainWindow):
             self.ui.responsesField.appendPlainText(f"STRANGE::{r}\n")
         pass
     def go_fn(self):
+        c_wave = float(self.oriel.wave())
         val =  self.ui.entryBox.value()
         unit = 'nm' # default
+        n_wave = 0
         if val < 179:
             unit = 'ev'
             self.ui.evRadioBtn.setChecked(True)
             self.ui.nmRadioBtn.setChecked(False)
+            n_wave = 1239.75/float(val)
         elif val > 180:
             unit = 'nm'
             self.ui.evRadioBtn.setChecked(False)
             self.ui.nmRadioBtn.setChecked(True)
+            n_wave = val
         # if self.ui.nmRadioBtn.isChecked():
         #     unit = 'nm'
         # elif self.ui.evRadioBtn.isChecked():
         #     unit = 'ev'
         bts = self.oriel.gowave(val, unit)
         self.ui.responsesField.appendPlainText(f"Bytes written: {bts}\n")
+        #     delay?
+        time.sleep(abs(c_wave-n_wave)/10.0*0.75)
+        cw = self.oriel.wave()
+        self.ui.waveLabel.setText(WAVE_LABEL_TEXT.format(cw))
+
     def toggle_fn(self):
         s = self.oriel.shutter()
         # self.ui.responsesField.appendPlainText(str(s)+"\n")
