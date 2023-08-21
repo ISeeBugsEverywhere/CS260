@@ -34,9 +34,9 @@ class OrielWindow(QtWidgets.QMainWindow):
             cw = self.oriel.wave()
             self.ui.waveLabel.setText(WAVE_LABEL_TEXT.format(cw))
         elif r == 1:
-            self.ui.responsesField.appendPlainText(f"NOT CONNECTED, status {r}\n")
+            self.ui.responsesField.appendPlainText(f"NOT CONNECTED, status {r}")
         else:
-            self.ui.responsesField.appendPlainText(f"STRANGE::{r}\n")
+            self.ui.responsesField.appendPlainText(f"STRANGE::{r}")
         pass
     def go_fn(self):
         c_wave = float(self.oriel.wave())
@@ -58,9 +58,9 @@ class OrielWindow(QtWidgets.QMainWindow):
         # elif self.ui.evRadioBtn.isChecked():
         #     unit = 'ev'
         bts = self.oriel.gowave(val, unit)
-        self.ui.responsesField.appendPlainText(f"Bytes written: {bts}\n")
+        self.ui.responsesField.appendPlainText(f"Bytes written: {bts}")
         #     delay?
-        time.sleep(math.floor(abs(c_wave-n_wave))/10.0*0.175)
+        time.sleep(math.floor(abs(c_wave-n_wave))/10.0*0.125)
         cw = self.oriel.wave()
         self.ui.waveLabel.setText(WAVE_LABEL_TEXT.format(cw))
 
@@ -77,13 +77,13 @@ class OrielWindow(QtWidgets.QMainWindow):
         s = self.oriel.shutter()
         # self.ui.responsesField.appendPlainText(str(s) + "\n")
         if s.lower() == 'c':
-            self.ui.responsesField.appendPlainText("Shutter is closed.\n")
+            self.ui.responsesField.appendPlainText("Shutter is closed.")
         elif s.lower() == 'o':
-            self.ui.responsesField.appendPlainText("Shutter is opened.\n")
+            self.ui.responsesField.appendPlainText("Shutter is opened.")
     def wave_fn(self):
         w = self.oriel.wave()
         self.ui.waveLabel.setText(WAVE_LABEL_TEXT.format(w))
-        self.ui.responsesField.appendPlainText(f"Current wave: {w}\n")
+        self.ui.responsesField.appendPlainText(f"Current wave: {w}")
 
     pass
 
