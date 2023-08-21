@@ -143,6 +143,7 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.actionQuit = QtWidgets.QAction(MainWindow)
+        self.actionQuit.setIcon(icon3)
         self.actionQuit.setObjectName("actionQuit")
         self.menuFile.addAction(self.actionQuit)
         self.menubar.addAction(self.menuFile.menuAction())
@@ -167,3 +168,4 @@ class Ui_MainWindow(object):
         self.shutterStatusLabel.setText(_translate("MainWindow", "?"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionQuit.setText(_translate("MainWindow", "Quit"))
+        self.actionQuit.setShortcut(_translate("MainWindow", "Ctrl+Q"))
